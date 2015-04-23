@@ -5,6 +5,12 @@
 # list files, grouping directories first
 alias ll='ls -alv --group-directories-first'
 
+# human readable output for df
+alias df='df -H'
+
+# human readable output for du
+alias du='du -ch'
+
 # get server cpu info
 alias cpuinfo='lscpu && uname -a'
 
