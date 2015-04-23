@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ "$1" = '' ]; then
+  read -p "Commit description: " desc
+  git add -v -A . && \
+  git add -u && \
+  git commit -m "$desc" && \
+  git push
+elif [ "$1" = '-m' ]; then
+  git add -v -A . && \
+  git add -u && \
+  git commit -m "$2" && \
+  git push 
+elif [ "$1" = '-h' ] || [ "$1" = 'help' ]; then
+  echo "usage:"
+  echo "commit <message>"
+  echo "example: to add, commit and push your changes, run the command: commit \"my commit message\""
+elif [ "$1" != '' ] && [ "$1" != '-h' ] && [ "$1" != 'help' ]; then
+  git add -v -A . && \
+  git add -u && \
+  git commit -m "$1" && \
+  git push
+fi
+
+# eof

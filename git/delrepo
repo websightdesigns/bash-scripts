@@ -1,0 +1,18 @@
+#!/bin/sh
+ 
+WEBROOT="/var/www/"
+REPODIR="/repo/"
+EXAMPLE="hostname.com"
+
+if [ "$1" != '' ]; then
+  if [ -d "$REPODIR$1/" ]; then
+    rm -rf "$REPODIR$1/"
+    echo "deleted repository at $REPODIR$1/"
+  else
+    echo "repository at $REPODIR$1/ does not exist"
+  fi
+elif [ "$1" = 'help' ] || [ "$1" = '' ]; then
+  echo "usage:"
+  echo "delrepo <reponame>"
+  echo "example: to delete a repository at $REPODIR$EXAMPLE just run the command 'delrepo $EXAMPLE'"
+fi

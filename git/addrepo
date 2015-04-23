@@ -1,0 +1,40 @@
+#!/bin/sh
+ 
+WEBROOT="/var/www/"
+REPODIR="/repo/"
+SSH="user@domain.com"
+USRGRP="user:group"
+EXAMPLE="hostname.com"
+
+if [ "$1" != '' ]; then
+  if [ ! -d "$REPODIR$1" ]; then
+    mkdir $REPODIR$1
+    cd $REPODIR$1
+    git --bare init
+    chown $USRGRP $REPODIR$1
+    echo "created repository at $REPODIR$1"
+  else
+    echo "repository already exists at $REPODIR$1"
+  fi
+  if [ ! -d "$WEBROOT$1" ]; then
+    # directory does not exist
+    cd $WEBROOT
+    git clone ssh://$SSH$REPODIR$1 ./$1
+  else
+    # directory exists
+    cd $WEBROOT
+    git clone ssh://$SSH$REPODIR$1 ./$1.tmp
+    mv $WEBROOT$1.tmp/.git $WEBROOT$1
+    rm -rf $WEBROOT$1.tmp
+  fi
+  if [ -d "$WEBROOT$1/.git/" ]; then
+    cd $WEBROOT$1
+    git add -v .
+    git commit -m 'initial commit'
+    git push
+  fi
+elif [ "$1" = 'help' ] || [ "$1" = '' ]; then
+  echo "usage:"
+  echo "addrepo <reponame>"
+  echo "example: to create a repository at $REPODIR$EXAMPLE run the command 'addrepo $EXAMPLE'"
+fi

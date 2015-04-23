@@ -1,0 +1,12 @@
+#!/bin/sh
+
+LOGDIR="/var/log/apache2/"
+
+if [ "$1" != '' ]; then
+  multitail -n 0 -i /var/log/apache2/$1_error.log -n 0 -i /var/log/apache2/$1_access.log
+elif [ "$1" = 'help' ] || [ "$1" = '' ]; then
+  echo "usage:"
+  echo "log <hostname>"
+  echo "example: to tail the logs for hostname.localhost just run the command 'log hostname.localhost'"
+  echo "To list available commands, use F1. To clear the current window, press 'o'. To clear all windows, press 'O'."
+fi

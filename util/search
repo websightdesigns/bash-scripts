@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# if the first argument was supplied
+if [ "$1" != '' ]; then
+  find . -type f -exec grep -l -e "$1" {} \;
+elif [ "$1" = 'help' ] || [ "$1" = '' ]; then
+  # usage instructions
+  echo "usage:"
+  echo "search <string>"
+  echo "example: to search the current directory recursively for 'string' just run 'search string'"
+fi

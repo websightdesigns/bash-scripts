@@ -1,0 +1,38 @@
+# aliases
+
+# place these in either ~/.bashrc or ~/.bash_profile
+
+# list files, grouping directories first
+alias ll='ls -alv --group-directories-first'
+
+# get server cpu info
+alias cpuinfo='lscpu && uname -a'
+
+# get server memory info
+alias meminfo='free -m -l -t'
+
+# get top process eating cpu
+alias pscpu='ps auxf | sort -nr -k 3 | less'
+
+# get top 10 processes eating cpu
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | less'
+
+# get top 10 processes eating memory
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+# list listening ports
+alias ports='lsof -i -P | grep -i "listen"'
+
+# resume wget by default
+alias wget='wget -c'
+
+# restart http daemon
+alias rehttp='sudo service apache2 reload'
+
+# restart samba daemons
+alias resamba='sudo service smbd restart && sudo service nmbd restart'
+
+# eof

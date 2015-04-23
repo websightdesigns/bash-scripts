@@ -1,0 +1,12 @@
+#!/bin/sh
+ 
+if [ "$1" != '' ]; then
+  sudo a2dissite $1
+  sudo a2ensite $1
+  sudo service apache2 reload
+  echo "reloaded $1"
+elif [ "$1" = 'help' ] || [ "$1" = '' ]; then
+  echo "usage:"
+  echo "sudo resite <hostname>"
+  echo "example: to disable and then re-enable hostname.localhost just run the command 'sudo resite hostname.localhost'"
+fi
