@@ -1,0 +1,14 @@
+# bash profile
+
+# place these in ~/.bash_profile
+
+# enable coloring of the terminal
+export CLICOLOR=1
+
+# set up specific colors
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# set up a new command prompt
+export PS1="[\u@\h \w]$ "
+
+# eof
