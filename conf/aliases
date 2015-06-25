@@ -5,6 +5,12 @@
 # list files, grouping directories first
 alias ll='ls -alv --group-directories-first'
 
+# cd to home directory and clear
+alias cdc='cd;clear'
+
+# clear
+alias cl='clear'
+
 # human readable output for df
 alias df='df -H'
 
